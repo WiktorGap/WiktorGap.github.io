@@ -1,0 +1,100 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Courgette', cursive;
+    overflow: hidden; /* Zapobieganie przewijaniu strony */
+}
+
+.container {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.heart-button {
+    width: 100px;
+    height: 90px;
+    margin-top: 10px;
+    cursor: pointer;
+    background: none; /* Usunięcie tła */
+    position: relative;
+    display: inline-block;
+}
+
+.heart-button::before,
+.heart-button::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 52px;
+    height: 80px;
+    border-radius: 50px 50px 0 0;
+    background: red;
+}
+
+.heart-button::before {
+    left: 50px;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+}
+
+.heart-button::after {
+    left: 0;
+    transform: rotate(45deg);
+    transform-origin: 100% 100%;
+}
+
+/* Styl dla napisu "KLIKNIJ MNIE" */
+.heart-text {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 10px;
+    transition: opacity 1s ease-in; /* Dodanie przejścia dla zmiany przezroczystości */
+}
+
+/* Animacja dla znikania serca */
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+.message {
+    display: none;
+    font-size: 3em;
+    color: #000000; /* Czarny kolor napisów */
+    margin-top: 20px;
+}
+
+.message.show {
+    display: block;
+}
+
+.kitten-bg, .hearts-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Zachowanie tła na miejscu, gdy użytkownik przewija stronę */
+    z-index: -1;
+    transition: opacity 0.5s;
+}
+
+.kitten-bg {
+    background-image: url('https://media.giphy.com/media/2x0VePimPaFJDpGZ7H/giphy.gif');
+    background-size: cover; /* Rozciąganie tła, aby wypełnić całą przestrzeń */
+    opacity: 1;
+}
+
+.hearts-bg {
+    background-image: url('https://media.giphy.com/media/QAF2NDkBi5OdW/giphy.gif');
+    background-size: cover; /* Rozciąganie tła, aby wypełnić całą przestrzeń */
+    opacity: 0;
+}
